@@ -1,0 +1,16 @@
+crime<-read.csv("D:\\DS Assignments\\Clustering\\crime_data.csv")
+d<-dist(crime,method = "euclidean")
+fit<-hclust(d,method = "centroid")
+plot(fit)
+clusters<-cutree(fit,k=4)
+rect.hclust(fit,k=4,border="red")
+tapply(crime$Murder,clusters,max)
+tapply(crime$Rape,clusters,max)
+tapply(crime$Assault,clusters,max)
+tapply(crime$UrbanPop,clusters,max)
+
+tapply(crime$Murder,clusters,min)
+tapply(crime$Rape,clusters,min)
+tapply(crime$Assault,clusters,min)
+tapply(crime$UrbanPop,clusters,min)
+
